@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+public class Calculator {
+	
+	public static void main(String[] args) {
+		String inputText;
+		String opValue = null;
+		String operator = null;
+		Double firstNumber = null;
+		Double secondNumber = null;
+		Double answer = null;
+		Scanner scanner = new Scanner (System.in);
+		String invalidMsg = "Error: You have entered an invalid value.\nExiting...";
+		
+		System.out.println("Hello and welcome to my calculator.\nPress 'Enter' to begin...");
+		inputText = scanner.nextLine();
+		
+		if (inputText != null) {
+			System.out.println("Enter your first number...");
+			try { firstNumber = scanner.nextDouble();
+				  scanner.nextLine(); 
+				  } catch (java.util.InputMismatchException InvalidInput) {
+					  System.out.println(invalidMsg);
+					  System.exit(0);
+				  	  }
+			}
+		if (firstNumber != null) {
+			System.out.println("Enter your operator...");
+			opValue = scanner.nextLine();
+			if (opValue.equals("*") 
+			 || opValue.equals("-")
+			 || opValue.equals("+")
+			 || opValue.equals("/")) {
+				operator = opValue;
+				}
+			} else {
+				System.out.println(invalidMsg);
+				System.exit(0); 
+				}
+		if (operator != null) {
+			System.out.println("Enter your second number...");
+			try { secondNumber = scanner.nextDouble();
+				  } catch (java.util.InputMismatchException InvalidInput) {
+					  System.out.println(invalidMsg);
+					  System.exit(0);
+				  	  }
+			if (secondNumber != null) {
+				switch (operator){
+				case "*":
+					answer = (firstNumber * secondNumber);
+					break;
+				case "/":
+					answer = (firstNumber / secondNumber);
+					break;
+				case "-":
+					answer = (firstNumber - secondNumber);
+					break;
+				case "+":
+					answer = (firstNumber + secondNumber);
+					break;
+				default: answer = null;
+					break;
+					}	
+				}
+	if (answer != null) {
+		System.out.println("Here is your calculation:\n" + firstNumber + " " + operator + " " + secondNumber +" = " + answer + ".");																			
+		scanner.close();
+		} else {
+			System.out.println(invalidMsg);
+			System.exit(0);
+			}
+		  }	
+	}
+}
