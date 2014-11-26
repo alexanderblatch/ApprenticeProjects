@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Calculator {
 	
 	public static void main(String[] args) {
+		//Initialisation of all global variables and a Scanner used to get input from the user.
 		String inputText;
 		String opValue = null;
 		String operator = null;
@@ -10,10 +11,12 @@ public class Calculator {
 		Double secondNumber = null;
 		Double answer = null;
 		Scanner scanner = new Scanner (System.in);
-		String invalidMsg = "Error: You have entered an invalid value.\nExiting...";
+		String invalidMsg = "Error: You have entered an invalid value.\nExiting..."; //This String is used for a generic error report, to save having to type it out in full each time.
 		
 		System.out.println("Hello and welcome to my calculator.\nPress 'Enter' to begin...");
 		inputText = scanner.nextLine();
+		
+		//Program checks for user input before prompting the user to provide the first number.
 		
 		if (inputText != null) {
 			System.out.println("Enter your first number...");
@@ -24,6 +27,11 @@ public class Calculator {
 					  System.exit(0);
 				  	  }
 			}
+			
+		//Program checks that first number has been successfully entered before continuing
+		// to prompt the user for the operator, making sure that the value entered is
+		// either "*", "-", "-" or "/".
+		
 		if (firstNumber != null) {
 			System.out.println("Enter your operator...");
 			opValue = scanner.nextLine();
@@ -37,6 +45,10 @@ public class Calculator {
 				System.out.println(invalidMsg);
 				System.exit(0); 
 				}
+				
+		//System checks that the next input has been successful before continuing
+		// to prompt the user for the second number.
+		
 		if (operator != null) {
 			System.out.println("Enter your second number...");
 			try { secondNumber = scanner.nextDouble();
@@ -44,6 +56,10 @@ public class Calculator {
 					  System.out.println(invalidMsg);
 					  System.exit(0);
 				  	  }
+				  	  
+			//System checks that the final input has been received before continuing to calculate 
+			// the value of 'answer' using the two numbers and operator provided by the user.
+			
 			if (secondNumber != null) {
 				switch (operator){
 				case "*":
@@ -62,6 +78,10 @@ public class Calculator {
 					break;
 					}	
 				}
+				
+	//System checks to make sure that an answer has been
+	// calculated before continuing to print it out.
+	
 	if (answer != null) {
 		System.out.println("Here is your calculation:\n" + firstNumber + " " + operator + " " + secondNumber +" = " + answer + ".");																			
 		scanner.close();
